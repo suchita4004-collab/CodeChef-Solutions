@@ -24,7 +24,7 @@ public class Main {
 **Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:14:00.593Z  
+**Submitted:** 2026-09-25T13:43:13.985Z  
 
 ```cpp
 import java.util.*;
