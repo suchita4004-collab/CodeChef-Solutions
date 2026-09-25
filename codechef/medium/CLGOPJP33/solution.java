@@ -2,15 +2,11 @@ class Codechef
 {
 	public static void main (String[] args)
 	{
-		int a = -50;
-		int b = 40;
-		int sum=a+b;
-		int product=a*b;
-		int quotined=a/b;
-		System.out.println(sum);
-		System.out.println(product);
-		System.out.println(quotined);
-		// update your code belowhis line
-		
+	    // Update the blanks in the code below
+		int s = 14;
+        int area = s * s ;
+        int cost = 7 * area ;
+        System.out.println(area);
+        System.out.println(cost);
 	}
 }
