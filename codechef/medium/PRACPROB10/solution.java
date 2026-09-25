@@ -27,7 +27,7 @@ class LargestScoreGap {
        for(int i=1;i< scores.length;i++){
            int gap =scores[i] - scores[i -1];
            
-           if(gap< maxGap) {
+           if(gap > maxGap) {
                maxGap =gap;
                
            }
