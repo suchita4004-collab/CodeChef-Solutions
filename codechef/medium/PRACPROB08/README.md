@@ -52,7 +52,7 @@ Output
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:40:13.454Z  
+**Submitted:** 2026-09-25T13:43:43.507Z  
 
 ```java
 import java.util.Scanner;
@@ -73,7 +73,9 @@ class ScoreCorrector {
             // Your code to check and replace negative scores goes here
             
             
-            
+           if(scores[i]<0) {
+               scores[i]=0;
+           }
             
         }
         // --- END OF INCOMPLETE CODE ---
