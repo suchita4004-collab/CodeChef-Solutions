@@ -4,16 +4,38 @@
 
 ## Problem
 
-_Description not available._
+### ArrayList Removal by Index
+
+Consider an `ArrayList` named `numbers` that initially contains the integers: `[10, 20, 30, 40, 50]`. You want to remove the element at index 2. What will be the contents of the `numbers` ArrayList after executing the following line of code?
+
+```
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        numbers.add(40);
+        numbers.add(50);
+
+        numbers.remove(2);
+
+        // What will be the content of numbers here?
+    }
+}
+
+```
 
 ## Solution
 
-**Language:** Java  
+**Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:55:55.436Z  
+**Submitted:** 2026-09-25T13:56:02.685Z  
 
-```java
+```cpp
 import java.util.*;
 
 class PassingScores {
