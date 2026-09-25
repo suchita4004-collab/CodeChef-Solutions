@@ -4,22 +4,29 @@ class Codechef {
     public static void main(String[] args) {
         // Step 1: Declare and initialize the ArrayList
         ArrayList<Integer> marks = new ArrayList<>();
+        marks.add(48);
         marks.add(70);
-        marks.add(80);
-        marks.add(90);
-        marks.add(85);
-        marks.add(75);
+        marks.add(86);
 
-        // Step 2: Update some elements
-        marks.set(1, 88);  // Update second element
-        marks.set(4, 95);  // Update fifth element
+        // Step 2: Update each element manually (split get and set)
+for (int i=0; i < marks.size();i++ )
+{
+    marks.set(i,marks.get(i) + 2);
+}
 
-        // Step 3: Print all elements without using a loop
-        System.out.println("Updated marks:");
-        System.out.println("Student 1: " + marks.get(0));
-        System.out.println("Student 2: " + marks.get(1));
-        System.out.println("Student 3: " + marks.get(2));
-        System.out.println("Student 4: " + marks.get(3));
-        System.out.println("Student 5: " + marks.get(4));
+
+
+
+
+
+
+
+
+
+        // Step 3: Print updated elements manually
+        System.out.println("Updated Marks:");
+        System.out.println(marks.get(0));
+        System.out.println(marks.get(1));
+        System.out.println(marks.get(2));
     }
 }
