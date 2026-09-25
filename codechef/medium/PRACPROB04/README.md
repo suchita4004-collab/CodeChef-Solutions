@@ -61,7 +61,7 @@ for (int i = 1; i < numbers.size(); i++) {
 **Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:09:52.872Z  
+**Submitted:** 2026-09-25T13:09:55.632Z  
 
 ```cpp
 import java.util.Scanner;
