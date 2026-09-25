@@ -16,7 +16,9 @@ class ScoreCorrector {
             // Your code to check and replace negative scores goes here
             
             
-            
+           if(scores[i]<0) {
+               scores[i]=0;
+           }
             
         }
         // --- END OF INCOMPLETE CODE ---
