@@ -20,7 +20,7 @@ Array for city names declared but not yet initialized.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:25:03.592Z  
+**Submitted:** 2026-09-25T13:25:09.920Z  
 
 ```java
 // This is a class named Codechef
