@@ -13,7 +13,7 @@ Which of the following is the correct way to declare and initialize a 2D array o
 **Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:56:30.332Z  
+**Submitted:** 2026-09-25T13:56:35.263Z  
 
 ```cpp
 import java.util.*;
