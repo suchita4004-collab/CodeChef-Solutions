@@ -1,12 +1,12 @@
 class Codechef
 {
-	public static void main (String[] args)
-	{
-	    int length = 6;
-	    int div= length /=3;
-	    System.out.println (div);
-	    
-	   // Update your code below this line
-		
-	}
+    public static void main(String[] args)
+    {
+        // Update your code below this line
+        int a = 21;
+        int b = 40;
+        int sum =a+b;
+        System.out.println(sum);
+        
+    }
 }
