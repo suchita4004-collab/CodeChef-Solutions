@@ -4,16 +4,37 @@
 
 ## Problem
 
-_Description not available._
+### ArrayList size() Method
+
+In this task, you need to print the number of elements in an array using the array's size() method. Complete the following code:
+
+```
+import java.util.ArrayList;
+
+class Codechef {
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(5);
+        numbers.add(10);
+        numbers.add(15);
+        numbers.add(20);
+        numbers.add(25);
+
+        int size = ______; 
+        System.out.println("ArrayList Size: " + size);
+    }
+}
+
+```
 
 ## Solution
 
-**Language:** Java  
+**Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:38:04.295Z  
+**Submitted:** 2026-09-25T13:38:09.673Z  
 
-```java
+```cpp
 import java.util.ArrayList;
 
 class Codechef {
