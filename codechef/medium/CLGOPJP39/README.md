@@ -4,29 +4,16 @@
 
 ## Problem
 
-### Multiple choice question
-
-What will be the value of x after the following statement?
-
-```
-public class Main {
-    public static void main(String[] args) {
-        int x = 7;
-        x *= 3;
-        System.out.println(x);
-    }
-}
-
-```
+_Description not available._
 
 ## Solution
 
-**Language:** C++  
+**Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T16:27:55.299Z  
+**Submitted:** 2026-09-25T16:27:45.106Z  
 
-```cpp
+```java
 class Codechef
 {
 	public static void main (String[] args)
