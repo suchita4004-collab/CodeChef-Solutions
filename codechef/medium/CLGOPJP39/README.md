@@ -24,7 +24,7 @@ public class Main {
 **Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T16:27:52.506Z  
+**Submitted:** 2026-09-25T16:27:55.299Z  
 
 ```cpp
 class Codechef
