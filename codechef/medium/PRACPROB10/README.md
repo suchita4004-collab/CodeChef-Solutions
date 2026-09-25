@@ -54,7 +54,7 @@ Output
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:48:28.451Z  
+**Submitted:** 2026-09-25T13:49:18.554Z  
 
 ```java
 import java.util.Scanner;
@@ -86,7 +86,7 @@ class LargestScoreGap {
        for(int i=1;i< scores.length;i++){
            int gap =scores[i] - scores[i -1];
            
-           if(gap< maxGap) {
+           if(gap > maxGap) {
                maxGap =gap;
                
            }
