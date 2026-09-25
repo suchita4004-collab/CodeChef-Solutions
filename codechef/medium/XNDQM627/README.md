@@ -1,0 +1,53 @@
+# XNDQM627
+
+![Difficulty](https://img.shields.io/badge/Difficulty-Medium-yellow)
+
+## Problem
+
+### Split String into Array and Access Elements
+
+Write a program to display  **individual colors**  from a comma-separated string using a static array and manual access. This program initializes a string with predefined color values separated by commas. It then uses the `split()` method to convert the  **string**  into an  **array**.
+
+ **Expected Output:** 
+
+```
+First color: Red
+Second color: Green
+Third color: Blue
+
+```
+
+## Solution
+
+**Language:** Java  
+**Runtime:** N/A  
+**Memory:** N/A  
+**Submitted:** 2026-09-25T13:27:51.705Z  
+
+```java
+class Codechef {
+    public static void main(String[] args) {
+        // Define a string with comma-separated values
+        String data = "Red,Green,Blue";
+
+        // Use the split() method to divide the string into an array, using "," as the delimiter
+        String[] colors = data.split(","); // Splits string into array
+
+        // Access and print each element of the array manually without using loops
+        System.out.println("First color:"
+        + colors[0]);
+        System.out.println("Second color:"
+        + colors[1]);
+        System.out.println("Third color:"
+        + colors[2]);
+        
+        
+        
+    }
+}
+
+```
+
+---
+
+[View on CodeChef](https://www.codechef.com/problems/XNDQM627)
