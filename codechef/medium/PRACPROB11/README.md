@@ -4,16 +4,36 @@
 
 ## Problem
 
-_Description not available._
+### Sum of Array Elements
+
+Write a Java program to calculate the sum of all elements in an integer array using a `for` loop. You are given an array of integers. Your task is to iterate through the array using a `for` loop and add each element to a variable called `sum`. Finally, print the value of `sum`.
+
+For example, if the array is `{1, 2, 3, 4, 5}`, the program should output `15`.
+
+```
+public class ArraySum {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+        int sum = 0;
+
+        // Your code here to calculate the sum using a for loop
+
+        System.out.println(sum);
+    }
+}
+
+```
+
+Which of the following code snippets, when inserted into the `// Your code here` section, will correctly calculate the sum of the array elements?
 
 ## Solution
 
-**Language:** Java  
+**Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-25T13:49:21.469Z  
+**Submitted:** 2026-09-25T13:49:29.017Z  
 
-```java
+```cpp
 import java.util.Scanner;
 import java.util.Arrays; // For sorting the array
 
