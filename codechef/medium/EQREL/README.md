@@ -79,36 +79,25 @@ Therefore, no energy is required.
 
 ## Solution
 
-**Language:** Java  
+**Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-28T14:39:08.054Z  
+**Submitted:** 2026-09-28T14:39:34.921Z  
 
-```java
-import java.util.Scanner;
+```py
+# cook your dish here
+import sys
 
-class LongWordCount {
+data = list(map(int, sys.stdin.read().split()))
 
-    public static void main(String[] args) {
-    // Your code goes here   
-       Scanner scanner =new Scanner(System.in);
-       String sentence = scanner.nextLine();
-       String[] words =sentence.split(" ");
-       
-       int count=0;
-       
-       for (int i=0;i < words.length;i++){
-           if (words[i].length() >=6) {
-               count ++;
-           }
-       }
-       System.out.println(count);
-       
-       scanner.close();
-       
-       
-    }
-}
+N = data[0]
+H = data[1:N + 1]
+
+minimum = min(H)
+answer = sum(H) - N * minimum
+
+print(answer)
+
 ```
 
 ---
