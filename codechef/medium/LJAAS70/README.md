@@ -23,7 +23,7 @@ Increasing
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-28T15:20:44.264Z  
+**Submitted:** 2026-09-28T15:21:17.266Z  
 
 ```java
 import java.util.Scanner;
@@ -49,6 +49,7 @@ class Codechef
 	    System.out.println("Neither");
 	}
 	// your code goes here
+	
 scanner.close();
 	}
 }
