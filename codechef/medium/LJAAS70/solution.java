@@ -21,6 +21,7 @@ class Codechef
 	    System.out.println("Neither");
 	}
 	// your code goes here
+	
 scanner.close();
 	}
 }
