@@ -1,4 +1,3 @@
-# cook your dish here
 import sys
 
 input = sys.stdin.readline
@@ -9,83 +8,152 @@ for _ in range(T):
     N = int(input())
     A = list(map(int, input().split()))
 
-    # Prefix parity of sum(A)
+    # Prefix parity of sum
     pref = [0] * (N + 1)
 
+    s = 0
     for i in range(N):
-        pref[i + 1] = pref[i] ^ (A[i] & 1)
+        s ^= A[i] & 1
+        pref[i + 1] = s
 
     answer = 0
 
-    # MEX can be at most 101
-    for mex in range(min(N, 101) + 1):
+    # A[i] <= 100, so MEX <= 101
+    limit = min(101, N + 1)
 
+    for mex in range(limit):
+
+        odd_mex = mex & 1
+
+        # Alice needs odd number of moves.
+        target = 1 ^ ((mex // 2) & 1)
+
+        # Last occurrence of 0 ... mex-1
         last = [0] * mex
+
+        # active[pos] = 1 if pos is currently the last
+        # occurrence of one of 0 ... mex-1
+        active = bytearray(N + 1)
+
+        seen = 0
+        minimum_last = 1
         last_mex = 0
 
-        # State of every prefix.
-        state = [0] * (N + 1)
+        # The valid prefix-index range is:
+        # [last_mex, minimum_last - 1]
 
-        if mex % 2 == 0:
-            parity_ge = 0
+        left = 0
+        right = -1
 
-            for i in range(1, N + 1):
-                if A[i - 1] >= mex + 1:
-                    parity_ge ^= 1
+        count0 = 0
+        count1 = 0
 
-                state[i] = pref[i] ^ parity_ge
-        else:
-            for i in range(N + 1):
-                state[i] = pref[i]
+        # For even MEX, state needs parity of
+        # number of elements >= mex + 1.
+        high_parity = 0
 
-        # Prefix counts of state 0 and state 1
-        cnt0 = [0] * (N + 1)
-        cnt1 = [0] * (N + 1)
+        # We use this when moving 'right'.
+        right_high = 0
 
-        for i in range(N + 1):
-            if i > 0:
-                cnt0[i] = cnt0[i - 1]
-                cnt1[i] = cnt1[i - 1]
-
-            if state[i] == 0:
-                cnt0[i] += 1
-            else:
-                cnt1[i] += 1
-
-        target = 1 ^ ((mex // 2) & 1)
+        # We use this when moving 'left'.
+        left_high = 0
 
         for r in range(1, N + 1):
 
             x = A[r - 1]
 
-            if x < mex:
-                last[x] = r
+            # State of prefix [1 ... r]
+            if not odd_mex and x >= mex + 1:
+                high_parity ^= 1
 
+            if odd_mex:
+                current_state = pref[r]
+            else:
+                current_state = pref[r] ^ high_parity
+
+            # Update last occurrences of values below MEX
+            if x < mex:
+                old = last[x]
+
+                if old:
+                    active[old] = 0
+                else:
+                    seen += 1
+
+                last[x] = r
+                active[r] = 1
+
+            # Last occurrence of MEX
             if x == mex:
                 last_mex = r
 
+            # Find minimum last occurrence
             if mex == 0:
                 minimum_last = r
-            else:
-                minimum_last = min(last)
 
-            if minimum_last <= last_mex:
+            elif seen == mex:
+                while minimum_last <= r and not active[minimum_last]:
+                    minimum_last += 1
+            else:
                 continue
 
-            needed = state[r] ^ target
+            # Prefix indices j must satisfy:
+            #
+            # last_mex <= j < minimum_last
+            #
+            # corresponding subarray is [j+1 ... r]
 
-            left = last_mex
-            right = minimum_last - 1
+            right_limit = minimum_last - 1
+
+            if last_mex > right_limit:
+                continue
+
+            # Expand right end of our state-count window
+            while right < right_limit:
+                right += 1
+
+                if not odd_mex and right > 0:
+                    if A[right - 1] >= mex + 1:
+                        right_high ^= 1
+
+                if odd_mex:
+                    state = pref[right]
+                else:
+                    state = pref[right] ^ right_high
+
+                if state:
+                    count1 += 1
+                else:
+                    count0 += 1
+
+            # Remove prefix indices from the left
+            while left < last_mex:
+
+                if not odd_mex and left > 0:
+                    if A[left - 1] >= mex + 1:
+                        left_high ^= 1
+
+                if odd_mex:
+                    state = pref[left]
+                else:
+                    state = pref[left] ^ left_high
+
+                if state:
+                    count1 -= 1
+                else:
+                    count0 -= 1
+
+                left += 1
+
+            # We need:
+            #
+            # current_state XOR state[j] = target
+            #
+            needed = current_state ^ target
 
             if needed == 0:
-                answer += cnt0[right]
-
-                if left > 0:
-                    answer -= cnt0[left - 1]
+                answer += count0
             else:
-                answer += cnt1[right]
-
-                if left > 0:
-                    answer -= cnt1[left - 1]
+                answer += count1
 
     print(answer)
