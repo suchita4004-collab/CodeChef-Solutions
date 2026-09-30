@@ -72,23 +72,31 @@ Output
 **Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-30T14:45:15.598Z  
+**Submitted:** 2026-09-30T14:46:19.102Z  
 
 ```py
-# cook your dish here
 MOD = 998244353
 
 T = int(input())
+
+# Precompute factorials
+MAX_N = 200000
+fact = [1] * (MAX_N + 1)
+
+for i in range(1, MAX_N + 1):
+    fact[i] = fact[i - 1] * i % MOD
 
 for _ in range(T):
     N, K = map(int, input().split())
     Q = list(map(int, input().split()))
 
-    # Last K-1 elements must be sorted
+    L = N - K + 1
+
+    # Last K-1 elements must be L+1, L+2, ..., N
     valid = True
 
-    for i in range(N - K + 2, N):
-        if Q[i - 1] > Q[i]:
+    for i in range(L, N):
+        if Q[i] != i + 1:
             valid = False
             break
 
@@ -96,9 +104,7 @@ for _ in range(T):
         print(0)
         continue
 
-    # Count left-to-right maximums in first N-K+1 elements
-    L = N - K + 1
-
+    # Count left-to-right maximums in first L elements
     maximum = 0
     records = 0
 
@@ -107,13 +113,7 @@ for _ in range(T):
             maximum = Q[i]
             records += 1
 
-    # Answer = K! * K^(records - 1)
-    factorial = 1
-
-    for i in range(1, K + 1):
-        factorial = factorial * i % MOD
-
-    answer = factorial * pow(K, records - 1, MOD) % MOD
+    answer = fact[K] * pow(K, records - 1, MOD) % MOD
 
     print(answer)
 ```
