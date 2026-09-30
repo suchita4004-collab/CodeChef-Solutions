@@ -61,12 +61,12 @@ Alice
 
 ## Solution
 
-**Language:** C++  
+**Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-30T14:38:45.088Z  
+**Submitted:** 2026-09-30T14:37:34.045Z  
 
-```cpp
+```py
 T = int(input())
 
 for _ in range(T):
