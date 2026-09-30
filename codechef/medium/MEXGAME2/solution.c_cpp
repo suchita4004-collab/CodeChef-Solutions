@@ -1,0 +1,232 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int N;
+        cin >> N;
+
+        vector<int> A(N + 1);
+        int maxA = 0;
+
+        for (int i = 1; i <= N; i++) {
+            cin >> A[i];
+            maxA = max(maxA, A[i]);
+        }
+
+        // Prefix parity of sum
+        vector<int> prefSum(N + 1, 0);
+
+        for (int i = 1; i <= N; i++) {
+            prefSum[i] = prefSum[i - 1] ^ (A[i] & 1);
+        }
+
+        // Global MEX.
+        // No subarray can have MEX greater than the MEX of the whole array.
+        vector<int> present(maxA + 2, 0);
+
+        for (int i = 1; i <= N; i++) {
+            if (A[i] <= maxA + 1)
+                present[A[i]] = 1;
+        }
+
+        int globalMex = 0;
+
+        while (globalMex < (int)present.size() &&
+               present[globalMex]) {
+            globalMex++;
+        }
+
+        long long answer = 0;
+
+        /*
+            For a subarray with MEX = m:
+
+            Number of valid moves =
+                sum(A)
+                - 1 - 2 - ... - (m-1)
+                - (m+1) * count(values >= m+1)
+
+            Therefore the parity can be checked using prefix parity.
+
+            For odd m:
+                state = prefixSumParity
+
+            For even m:
+                state = prefixSumParity
+                        XOR prefixParity(count of values >= m+1)
+
+            Alice wins when:
+                state[R] XOR state[L-1]
+                XOR parity(m*(m-1)/2)
+                = 1
+        */
+
+        for (int m = 0; m <= globalMex; m++) {
+
+            // state[i] = parity information for prefix [1..i]
+            vector<unsigned char> state(N + 1);
+
+            // prefix count of state = 1
+            vector<int> prefOne(N + 1, 0);
+
+            int highParity = 0;
+
+            for (int i = 1; i <= N; i++) {
+
+                if ((m & 1) == 0 && A[i] >= m + 1) {
+                    highParity ^= 1;
+                }
+
+                if (m & 1) {
+                    state[i] = prefSum[i];
+                } else {
+                    state[i] = prefSum[i] ^ highParity;
+                }
+
+                prefOne[i] = prefOne[i - 1] + state[i];
+            }
+
+            /*
+                last[x] = last occurrence of x
+                for x < m.
+
+                A subarray [L..R] has MEX m iff:
+
+                    every 0..m-1 occurs
+                    m does not occur
+
+                Therefore:
+
+                    last[m] < L
+                    L <= minimum(last[0], ..., last[m-1])
+
+                Using j = L-1:
+
+                    last[m] <= j < minimum_last
+            */
+
+            vector<int> last(m, 0);
+
+            // active[position] tells whether that position
+            // is currently the last occurrence of some x < m.
+            vector<unsigned char> active(N + 1, 0);
+
+            int seen = 0;
+            int minimumLast = 1;
+            int lastMex = 0;
+
+            // Prefix-index window [left ... right]
+            int left = 0;
+            int right = -1;
+
+            // Number of state 0/1 inside the current window
+            int cntOne = 0;
+            int cntZero = 0;
+
+            int target = 1 ^ ((m / 2) & 1);
+
+            for (int r = 1; r <= N; r++) {
+
+                int x = A[r];
+
+                // Update last occurrence of values < MEX
+                if (x < m) {
+
+                    if (last[x] != 0) {
+                        active[last[x]] = 0;
+                    } else {
+                        seen++;
+                    }
+
+                    last[x] = r;
+                    active[r] = 1;
+                }
+
+                // Last occurrence of MEX
+                if (x == m) {
+                    lastMex = r;
+                }
+
+                int hi;
+
+                if (m == 0) {
+                    // No values are required.
+                    hi = r - 1;
+                }
+                else {
+                    // Not all 0..m-1 are present yet.
+                    if (seen < m) {
+                        continue;
+                    }
+
+                    // Find minimum last occurrence.
+                    while (minimumLast <= r &&
+                           !active[minimumLast]) {
+                        minimumLast++;
+                    }
+
+                    hi = minimumLast - 1;
+                }
+
+                // Valid prefix indices are:
+                // [lastMex, hi]
+                if (lastMex > hi) {
+                    continue;
+                }
+
+                /*
+                    Expand right side of prefix-index window.
+                */
+                while (right < hi) {
+                    right++;
+
+                    if (state[right]) {
+                        cntOne++;
+                    } else {
+                        cntZero++;
+                    }
+                }
+
+                /*
+                    Move left side of prefix-index window.
+                */
+                while (left < lastMex) {
+
+                    if (state[left]) {
+                        cntOne--;
+                    } else {
+                        cntZero--;
+                    }
+
+                    left++;
+                }
+
+                // State of prefix [1..r]
+                int currentState = state[r];
+
+                // We need:
+                //
+                // currentState XOR state[j] = target
+                //
+                int needed = currentState ^ target;
+
+                if (needed == 1) {
+                    answer += cntOne;
+                } else {
+                    answer += cntZero;
+                }
+            }
+        }
+
+        cout << answer << '\n';
+    }
+
+    return 0;
+}
