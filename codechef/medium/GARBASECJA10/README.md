@@ -20,7 +20,7 @@ product = new Product("Mobile", 25000);
 **Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-05T16:59:53.840Z  
+**Submitted:** 2026-10-05T16:59:58.685Z  
 
 ```cpp
 import java.util.Scanner;
