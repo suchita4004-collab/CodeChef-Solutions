@@ -13,7 +13,7 @@ Which of the following statements is true about static classes in Java?
 **Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-05T16:15:37.501Z  
+**Submitted:** 2026-10-05T16:15:41.843Z  
 
 ```cpp
 class OuterClass {
