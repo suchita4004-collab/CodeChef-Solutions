@@ -4,18 +4,16 @@
 
 ## Problem
 
-### Multiple Choice Question
-
-Which of the following statements is true about static classes in Java?
+_Description not available._
 
 ## Solution
 
-**Language:** C++  
+**Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-05T16:15:41.843Z  
+**Submitted:** 2026-10-05T16:15:28.977Z  
 
-```cpp
+```java
 class OuterClass {
     // Static nested class
     public static class StaticNestedClass {
