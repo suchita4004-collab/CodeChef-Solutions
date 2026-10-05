@@ -13,7 +13,7 @@ What is the key difference between a constructor and a regular method in Java?
 **Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-05T16:15:53.886Z  
+**Submitted:** 2026-10-05T16:15:57.180Z  
 
 ```cpp
 class OuterClass {
