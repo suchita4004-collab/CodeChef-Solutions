@@ -1,26 +1,27 @@
-class MathUtils {
-    // A static method to calculate the square of an integer
-    public static int square(int num) {
-        return num * num;
-    }
+import java.util.Scanner;
+
+class BankAccount {
+    public static int totalBalance;
     
-    // Another static method to calculate the factorial of an integer
-    public static int factorial(int n) {
-        if (n == 0 || n == 1) {
-            return 1;
-        } else {
-            return n * factorial(n - 1);
-        }
+
+    public BankAccount(int balance) {
+        totalBalance= totalBalance + balance;
     }
 }
 
+
 class Codechef {
     public static void main(String[] args) {
-        // Call the static methods directly using the class name
-        int squaredValue = MathUtils.square(5);
-        System.out.println("Square of 5 is: " + squaredValue);
+        Scanner scanner = new Scanner(System.in);
 
-        int factorialValue = MathUtils.factorial(5);
-        System.out.println("Factorial of 5 is: " + factorialValue);
+        int amount = scanner.nextInt();
+        BankAccount account1 = new BankAccount(amount);
+
+        amount = scanner.nextInt();
+        BankAccount account2 = new BankAccount(amount);
+
+        System.out.println(BankAccount.totalBalance);
+
+        scanner.close();
     }
 }
