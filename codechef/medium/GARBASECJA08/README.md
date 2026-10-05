@@ -13,7 +13,7 @@ When does an object become eligible for Garbage Collection?
 **Language:** C++  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-05T16:59:04.284Z  
+**Submitted:** 2026-10-05T16:59:06.649Z  
 
 ```cpp
 import java.util.Scanner;
