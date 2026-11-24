@@ -48,7 +48,7 @@ Division not allowed.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-24T07:16:53.019Z  
+**Submitted:** 2026-11-24T07:17:03.269Z  
 
 ```java
 import java.util.Scanner;
