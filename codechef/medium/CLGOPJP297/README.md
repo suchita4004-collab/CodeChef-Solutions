@@ -42,7 +42,7 @@ Total Sum: 45
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-24T07:23:32.669Z  
+**Submitted:** 2026-11-24T07:23:54.174Z  
 
 ```java
 import java.util.ArrayList;
